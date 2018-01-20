@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>我的博客</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/site.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/index.css">-->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="app">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand hidden-sm" href="index.html">首页</a>
+            </div>
+            <div class="navbar-collapse collapse" role="navigation">
+                <ul class="nav navbar-nav">
+                    <li class="hidden-sm hidden-md"><a href="javascript:;" @click="curId=0" :class="{'cur':curId===0}">教育背景</a></li>
+                    <li><a href="javascript:;" @click="curId=1" :class="{'cur':curId===1}">工作经验</a></li>
+                    <li><a href="javascript:;" @click="curId=2" :class="{'cur':curId===2}">自我评价</a></li>
+                    <li><a href="javascript:;" @click="curId=3" :class="{'cur':curId===3}">来一首诗</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right hidden-sm">
+                    <li><a href="javascript:;" @click="curId=4" :class="{'cur':curId===4}">关于我</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class=" projects">
+        <div id="carousel-example-generic" class="carousel slide marginTop" data-ride="carousel">
+            <!-- ban -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="images/1.gif" alt="大图" width="100%">
+                </div>
+                <div class="item">
+                    <img src="images/2.gif" alt="大图" width="100%">
+                </div>
+            </div>
+        </div>
+        <ol class="breadcrumb row">
+            <li class="col-xs-6 col-sm-6 col-md-4 col-lg-3 "><a href="index.html">首页</a></li>
+            <li class="active col-xs-6 col-sm-6 col-md-4 col-lg-3 " id="but" style="display: none"><a href="javascript:;" >我的故乡</a></li>
+            <li class="active col-xs-6 col-sm-6 col-md-4 col-lg-3 " id="clo"><a href="javascript:;">关闭地图</a></li>
+        </ol>
+        <div class="map" id="allmap">
+
+        </div>
+        <div id="driving_way" style="display: block">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="str">起点</label>
+                    <input type="text" class="form-control" id="str" placeholder="起点">
+                </div>
+                <div class="form-group">
+                    <label for="end">目的地</label>
+                    <input type="text" class="form-control" id="end" placeholder="目的地">
+                </div>
+                <select class="form-control">
+                    <option value="0">最少时间</option>
+                    <option value="1">最少换乘</option>
+                    <option value="2">最少步行</option>
+                    <option value="3">不乘地铁</option>
+                </select>
+                <input type="button" id="result" value="查询" class="btn btn-success form-control"/>
+            </form>
+        </div>
+    </div>
+        <!--教育背景-->
+        <div class="container-fluid row animated pulse" v-show="curId===0" style="box-shadow: 0 0 5px 0 #c7ccb8">
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ">
+                <div class="thumbnail">
+                    <a href="javascript:" target="_blank" title="我的大学" >
+                        <img class="lazy" src="images/xueyuan.jpg" width="300" data-src="images/5.gif" alt="我的大学"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="javascript:" target="_blank" title="我的大学">山政校门<br><small>山东政法学院</small></a>
+                        </h3>
+                        <p>
+                            还记得来学校报道时候那份对大学校园的憧憬，然而时光已悄然离去，留下的是记忆...
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ">
+                <div class="thumbnail">
+                    <a href="javascript:" target="_blank" title="我的教学楼">
+                        <img class="lazy" src="images/5.gif" width="300" data-src="images/5.gif" alt="我的教学楼"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="javascript:" target="_blank" title="我的教学楼">至善楼<br><small>综合教学楼</small></a>
+                        </h3>
+                        <p>
+                           2010年到2013年大部分都在这所教学楼里度过，计算机信息管理系已改名信息学院...
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ">
+                <div class="thumbnail">
+                    <a href="javascript:" target="_blank" title="茂陵山">
+                        <img class="lazy" src="images/ml.gif" width="300" data-src="images/ml.gif" alt="茂陵山"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="javascript:" target="_blank" title="茂陵山">茂陵山<br><small>茂陵山一角</small></a>
+                        </h3>
+                        <p>
+                            还记得青山有幸埋忠骨，为解放事业而牺牲的烈士长眠之地，英雄永垂不朽...
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ">
+                <div class="thumbnail">
+                    <a href="javascript:" target="_blank" title="防空洞">
+                        <img class="lazy" src="images/fk.gif" width="300" data-src="images/fk.gif" alt="防空洞"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="javascript:" target="_blank" title="防空洞">防空洞<br><small>封闭的防空洞</small></a>
+                        </h3>
+                        <p>
+                            在来学校的时候防空洞已经封闭，防空洞已经在和平年代失去了它的作用...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--工作经验-->
+        <div class="container-fluid row" v-show="curId===1">
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3  animated fadeInDown">
+                <div class="thumbnail">
+                    <h3>
+                        2016/10 -- 2017/11<br><small>北京果威科技有限公司</small>
+                    </h3>
+                    <p>
+                        负责产品的web开发工作,涵盖PC端web和手机端web;优化前端页面性能,对web前沿技术进行研究和调研，提升用户体验
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3  animated fadeInUp">
+                <div class="thumbnail">
+                    <h3>
+                        2014/02 -- 2016/10<br><small>济南高远地理测绘公司</small>
+                    </h3>
+                    <p>
+                        利用全站仪对数据进行坐标定位并拍照采集图像，用电脑软件将坐标进行纠栈，导出excle表格数据比对照片进行修正。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--自我评价-->
+        <div class="container-fluid row text-success" v-show="curId===2">
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3  animated bounceInLeft">
+                    本人做事稳重，对待工作认真，责任心较强，待人真诚，善于沟通，时刻保持学习，积极拥抱变化。喜欢web 开发，具备一定的框架分析、开发和应用能力，拥有较强的学习能力与团队精神，能够很快的适应工作环境。
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3  animated bounceInRight">
+                    1.熟悉Vue、React、Angular等前端框架和weui、ionic等类库。<br>
+                    2.熟悉原生JavaScript,同时使用jQuery，完成页面交互和业务逻辑。<br>
+                    3.熟悉HTML5、CSS3方面的新特性， Bootstrap的运用，利用响应式开发实现移动端的适配问题。<br>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3  animated bounceInLeft">
+                    4.掌握W3C规范，熟练掌握HTML,CSS 盒模型、常用布局、快速还原设计稿。<br>
+                    5.熟练运用PS图形处理软件和sublime、webstorm等编码工具进行前端页面开发，对css预处理器Sass有一定的认知。<br>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3  animated bounceInRight">
+                    6.了解MySQL数据库，能编写简单SQL语句，掌握一定的后台方面技术，如PHP代码，以增删改查为主，实现简单的功能。（如：登录注册等）可以与后台工程师交流沟通。<br>
+            </div>
+        </div>
+        <!--来一首诗-->
+        <div class="row" v-show="curId===3">
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-md-offset-1 animated zoomIn">
+                <h3>临江客</h3>
+                <p>
+                    狂风流云气，<br>清雨弄孤烟。<br>
+                    天地一闲客，<br>江翁渡渔湾！<br>
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 ">
+                <h3>我是于树真，很高兴你能花出时间来看我的个人简介。</h3>
+            </div>
+        </div>
+        <!--关于我-->
+        <div class="container-fluid row animated flip" v-show="curId===4">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 ">
+                <div class="thumbnail">
+                    <a href="javascript:" target="_blank" title="甲秀楼">
+                        <img class="lazy" src="images/1.jpg" width="300" data-src="images/1.jpg" alt="甲秀楼"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="javascript:" target="_blank" title="甲秀楼">甲秀楼<br><small>贵阳一景</small></a>
+                        </h3>
+                        <p>
+                            在贵阳工作之余和同事经过甲秀楼，拍摄角度不错哦。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 ">
+                <div class="thumbnail">
+                    <a href="javascript:" target="_blank" title="工作">
+                        <img class="lazy" src="images/gz.gif" width="300" data-src="images/gz.gif" alt="工作"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="javascript:" target="_blank" title="工作">工作中<br><small>徒步追寻公交</small></a>
+                        </h3>
+                        <p>
+                            翻山越岭在工作，测绘其实挺辛苦的,有时又乐在其中...
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 ">
+                <div class="thumbnail">
+                    <a href="javascript:" target="_blank" title="">
+                        <img class="lazy" src="images/7.gif" width="300" data-src="images/7.gif" alt="千佛山"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="javascript:" target="_blank" title="工作">千佛山<br><small>千佛山</small></a>
+                        </h3>
+                        <p>
+                            千佛山唐槐，拥有近千年历史的古树，历史已经记住了她
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 ">
+                <div class="thumbnail">
+                    <a href="javascript:" target="_blank" title="">
+                        <img class="lazy" src="images/4.gif" width="300" data-src="images/4.gif" alt="永庆寺"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="javascript:" target="_blank" title="工作">永庆寺<br><small>永庆寺</small></a>
+                        </h3>
+                        <p>
+                            我和发小在德州永庆寺，这是离我家不算远的寺庙，当时正在重建
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 ">
+                <div class="thumbnail">
+                    <a href="javascript:" target="_blank" title="">
+                        <img class="lazy" src="images/zj.gif" width="300" data-src="images/zj.gif" alt="故宫"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="javascript:" target="_blank" title="工作">故宫<br><small>故宫</small></a>
+                        </h3>
+                        <p>
+                            去故宫，真的被紫禁城的皇家气势所震撼，原来帝王之家就是这样。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3" style="font-size: 12px">
+                    <span id="n"></span>年<span id="y"></span>月<span id="r"></span>日
+                    星期<span id="x"></span>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 scrollBox">
+                    <ul>
+                        <li>
+                            <p class="text-danger">兰陵美酒郁金香</p>
+                        </li>
+                        <li>
+                            <p class="text-success">玉碗盛来琥珀光</p>
+                        </li>
+                        <li>
+                            <p class="text-warning">但使主人能醉客</p>
+                        </li>
+                        <li>
+                            <p class="text-success">不知何处是他乡</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<script src="https://unpkg.com/vue"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
