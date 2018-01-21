@@ -35,9 +35,10 @@
                     <li><a href="javascript:;" @click="curId=1" :class="{'cur':curId===1}">工作经验</a></li>
                     <li><a href="javascript:;" @click="curId=2" :class="{'cur':curId===2}">自我评价</a></li>
                     <li><a href="javascript:;" @click="curId=3" :class="{'cur':curId===3}">来一首诗</a></li>
+                    <li><a href="javascript:;" @click="curId=4" :class="{'cur':curId===4}">关于我的</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right hidden-sm">
-                    <li><a href="javascript:;" @click="curId=4" :class="{'cur':curId===4}">关于我</a></li>
+                    <li><a href="javascript:;" @click="curId=5" :class="{'cur':curId===5}">给我留言</a></li>
                 </ul>
             </div>
         </div>
@@ -52,10 +53,10 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="images/1.gif" alt="大图" width="100%">
+                    <img src="images/2.gif" alt="大图" width="100%">
                 </div>
                 <div class="item">
-                    <img src="images/2.gif" alt="大图" width="100%">
+                    <img src="images/1.gif" alt="大图" width="100%">
                 </div>
             </div>
         </div>
@@ -275,6 +276,27 @@
                 </div>
             </div>
         </div>
+        <div class="container row" v-show="curId===5">
+            <h3>留言</h3>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6  animated zoomIn">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inp" class="control-label">昵称:</label>
+                        <input type="text" class="form-control" id="inp" placeholder="昵称">
+                    </div>
+                    <div class="form-group">
+                        <label for="are">留言板:</label>
+                        <textarea  id="are" cols="" rows="" class="form-control" style="resize: none;"></textarea>
+                    </div>
+                    <button onclick="buts()" class=" btn btn-success form-control">提交</button>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-lg-offset-2">
+                <h4>最近的留言记录</h4>
+                <h5>有什么建议，不吝赐教哦( *^_^* )</h5>
+                <div id="box"></div>
+            </div>
+        </div>
     </div>
         <div class="container-fluid panel-footer">
             <div class="row">
@@ -306,5 +328,39 @@
 <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.4"></script>
 <script src="https://unpkg.com/vue"></script>
 <script type="text/javascript" src="js/index.js"></script>
+<script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
+
+<script>
+    var ref = new Wilddog("wd4012320599nndlmg.wilddogio.com/");
+    // var inp = document.getElementById('inp').value;
+    // var are = document.getElementById('are').value;
+    function buts() {
+        ref.child("first_node").set({
+            "ss": document.getElementById('inp').value,
+            "usesarName": document.getElementById('are').value
+        }, function(error) {
+            if(error == null){
+                alert('留言成功！')
+            }else{
+                alert('留言失败！')
+            }
+        });
+    }
+    ref.on('value',function (snap) {
+        console.log(snap.val())
+        var out = ''
+        for(var a in snap.val()){
+            out +=
+                '<div class="user">'+
+                    '<ul>'+
+                        '<li class="text-success">'+'昵称：'+snap.val()[a].ss +'</li>'+
+                        '<li>'+'留言：'+snap.val()[a].usesarName +'</li>'+
+                    '</ul>'+
+                '</div>'
+        }
+        console.log(out)
+        document.getElementById('box').innerHTML = out;
+    })
+</script>
 </body>
 </html>

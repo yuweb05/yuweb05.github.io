@@ -31,7 +31,7 @@ but.onclick = function (ev) {
     // var ev = window.event || ev;  //event-----谷歌。ie   通过参数传入的ev  ----ff
     // ev.stopPropagation ?  ev.stopPropagation() :  ev.cancelBubble = true;
 }
-clo.onclick=function (e) {
+clo.onclick=function () {
     // e.preventDefault()
     // allmap.style.display = 'none'
     $("#allmap").animate({'height':0},600)
@@ -96,3 +96,11 @@ scrollBox.hover(function(){
 },function(){
     scrollId = setInterval(scrollMove,50);
 });
+
+
+
+
+
+
+
+
