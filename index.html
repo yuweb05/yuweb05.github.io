@@ -85,6 +85,11 @@
                     <option value="3">不乘地铁</option>
                 </select>
                 <input type="button" id="result" value="查询" class="btn btn-success form-control"/>
+                <div class="form-group" style="margin-top: 5px;">
+                    <audio src="images/2.mp3" controls="controls" autoplay loop >
+                        您的浏览器不支持audio。
+                    </audio>
+                </div>
             </form>
         </div>
     </div>
@@ -204,7 +209,7 @@
             </div>
         </div>
         <!--关于我-->
-        <div class=" row animated flip" v-show="curId===4">
+        <div class=" row animated fadeIn" v-show="curId===4">
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 ">
                 <div class="thumbnail">
                     <a href="javascript:" target="_blank" title="甲秀楼">
@@ -247,7 +252,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 ">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
                 <div class="thumbnail">
                     <a href="javascript:" target="_blank" title="">
                         <img class="lazy" src="images/4.gif" width="300" data-src="images/4.gif" alt="永庆寺"></a>
@@ -277,7 +282,7 @@
             </div>
         </div>
         <div class="container row" v-show="curId===5">
-            <h3>留言</h3>
+            <h3>留言 <h5><span id="num"></span></h5></h3>
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6  animated zoomIn">
                 <div class="form-horizontal">
                     <div class="form-group">
@@ -329,11 +334,8 @@
 <script src="https://unpkg.com/vue"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
-
 <script>
     var ref = new Wilddog("wd4012320599nndlmg.wilddogio.com/");
-    // var inp = document.getElementById('inp').value;
-    // var are = document.getElementById('are').value;
     function buts() {
         ref.child("first_node").set({
             "ss": document.getElementById('inp').value,
