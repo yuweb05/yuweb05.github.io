@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>我的博客</title>
+    <title>我的网站</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/site.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
@@ -159,7 +159,7 @@
             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3  animated fadeInDown">
                 <div class="thumbnail">
                     <h3>
-                        2016/10 -- 2017/11<br><small>北京果威科技有限公司</small>
+                        2016/10 -- <br><small>北京果威科技有限公司</small>
                     </h3>
                     <p>
                         负责产品的web开发工作,涵盖PC端web和手机端web;优化前端页面性能,对web前沿技术进行研究和调研，提升用户体验
@@ -252,24 +252,24 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-                <div class="thumbnail">
-                    <a href="javascript:" target="_blank" title="">
-                        <img class="lazy" src="images/4.gif" width="300" data-src="images/4.gif" alt="永庆寺"></a>
-                    <div class="caption">
-                        <h3>
-                            <a href="javascript:" target="_blank" title="工作">永庆寺<br><small>永庆寺</small></a>
-                        </h3>
-                        <p>
-                            我和发小在德州永庆寺，这是离我家不算远的寺庙，当时正在重建
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <!--<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">-->
+                <!--<div class="thumbnail">-->
+                    <!--<a href="javascript:" target="_blank" title="">-->
+                        <!--<img class="lazy" src="images/4.gif" width="300" data-src="images/4.gif" alt="永庆寺"></a>-->
+                    <!--<div class="caption">-->
+                        <!--<h3>-->
+                            <!--<a href="javascript:" target="_blank" title="工作">永庆寺<br><small>永庆寺</small></a>-->
+                        <!--</h3>-->
+                        <!--<p>-->
+                            <!--我和发小在德州永庆寺，这是离我家不算远的寺庙，当时正在重建-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 ">
                 <div class="thumbnail">
                     <a href="javascript:" target="_blank" title="">
-                        <img class="lazy" src="images/zj.gif" width="300" data-src="images/zj.gif" alt="故宫"></a>
+                        <img class="lazy" src="images/gg.gif" width="300" data-src="images/gg.gif" alt="故宫"></a>
                     <div class="caption">
                         <h3>
                             <a href="javascript:" target="_blank" title="工作">故宫<br><small>故宫</small></a>
@@ -335,22 +335,31 @@
 <script type="text/javascript" src="js/index.js"></script>
 <script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
 <script>
-    var ref = new Wilddog("wd4012320599nndlmg.wilddogio.com/");
-    function buts() {
-        ref.child("first_node").push({
-            "ss": document.getElementById('inp').value,
-            "usesarName": document.getElementById('are').value
-        }, function(error) {
-            if(error == null){
-                alert('留言成功！')
-            }else{
-                alert('留言失败！')
-            }
-        });
-    }
     var ref = new Wilddog("wd4012320599nndlmg.wilddogio.com/first_node");
+    function buts() {
+        if(document.getElementById('inp').value == ''){
+            alert('请留下你的昵称呗')
+        }else if(document.getElementById('are').value == ''){
+            alert('您还没有留言哦')
+        }
+        else{
+            ref.push({
+                "ss": document.getElementById('inp').value,
+                "usesarName": document.getElementById('are').value
+            }, function(error) {
+                if(error == null){
+                    alert('留言成功！')
+                }else{
+                    alert('留言失败！')
+                }
+            });
+            document.getElementById('inp').value = '';
+            document.getElementById('are').value = '';
+        }
+
+    }
     ref.orderByKey().limitToLast(3).on('value',function (snap) {
-        console.log(snap.val())
+//        console.log(snap.val())
         var out = ''
         for(var a in snap.val()){
             out +=
@@ -361,7 +370,7 @@
                     '</ul>'+
                 '</div>'
         }
-        console.log(out)
+//        console.log(out)
         document.getElementById('box').innerHTML = out;
     })
 </script>
