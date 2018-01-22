@@ -337,7 +337,7 @@
 <script>
     var ref = new Wilddog("wd4012320599nndlmg.wilddogio.com/");
     function buts() {
-        ref.child("first_node").set({
+        ref.child("first_node").push({
             "ss": document.getElementById('inp').value,
             "usesarName": document.getElementById('are').value
         }, function(error) {
@@ -348,7 +348,8 @@
             }
         });
     }
-    ref.on('value',function (snap) {
+    var ref = new Wilddog("wd4012320599nndlmg.wilddogio.com/first_node");
+    ref.orderByKey().limitToLast(3).on('value',function (snap) {
         console.log(snap.val())
         var out = ''
         for(var a in snap.val()){

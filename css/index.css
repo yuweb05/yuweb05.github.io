@@ -1601,6 +1601,6 @@ li{
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.user li{
+.user .text-success{
   text-decoration: underline;
 }
