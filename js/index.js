@@ -1,4 +1,4 @@
-new Vue({
+var app = new Vue({
     el: '#app',
     data: {
         curId: 0
@@ -164,9 +164,59 @@ setCookie("counter", visits, now)
 document.getElementById('num').innerHTML = "您是到访的第" + visits + "位用户！"
 
 
+$('#in li').click(function () {
+    var deviceWidth = document.documentElement.clientWidth;
+    if(deviceWidth < 720){
+        $('#first').html($(this).html())
+    }
+    $(this).parents('#in').removeClass('in')
+})
 
+// $('#in li').on('click',function () {
+//     $(this).parents('#in').removeClass('in')
+// })
 
+// document.designMode="on";
 
+function Times() {
+    var nav = `<h3>
+                   <a href="javascript:" target="_blank" title="我的大学">山政校门<br><small>山东政法学院</small></a>
+               </h3>
+               <p>
+                       还记得来学校报道时候那份对大学校园的憧憬，然而时光已悄然离去，留下的是记忆...
+               </p>`
+    var nav1 = `<h3>
+                   <a href="javascript:" target="_blank" title="我的教学楼">至善楼<br><small>综合教学楼</small></a>
+                </h3>
+                <p>
+                   2010年到2013年大部分都在这所教学楼里度过，计算机信息管理系已改名信息学院...
+                </p>`
+    var nav2 = `<h3>
+                   <a href="javascript:" target="_blank" title="茂陵山">茂陵山<br><small>茂陵山一角</small></a>
+                </h3>
+                <p>
+                    还记得青山有幸埋忠骨，为解放事业而牺牲的烈士长眠之地，英雄永垂不朽...
+                </p>`
+    var nav3 = `<h3>
+                  <a href="javascript:" target="_blank" title="防空洞">防空洞<br><small>封闭的防空洞</small></a>
+                 </h3>
+                 <p>
+                    在来学校的时候防空洞已经封闭，防空洞已经在和平年代失去了它的作用...
+                 </p>`
+    function Time(id,nav) {
+        var n = 0;
+        var t = setInterval(function () {
+            document.getElementById(id).innerHTML = nav.substring(0,n);
+            n = n+1;
+            if(n == nav.length){
+                clearInterval(t)
+            }
+        },55)
+    }
+    Time("div",nav)
+    Time("d1",nav1)
+    Time("d2",nav2)
+    Time("d3",nav3)
+}
 
-
-
+Times()
