@@ -209,7 +209,7 @@ function Times() {
             document.getElementById(id).innerHTML = nav.substring(0,n);
             n = n+1;
             if(n == nav.length){
-                clearInterval(t)
+              clearInterval(t)
             }
         },55)
     }
@@ -220,3 +220,45 @@ function Times() {
 }
 
 Times()
+
+
+var ref = new Wilddog("wd4012320599nndlmg.wilddogio.com/first_node");
+function buts() {
+    if(document.getElementById('inp').value == ''){
+        alert('请留下你的昵称呗')
+    }else if(document.getElementById('are').value == ''){
+        alert('您还没有留言哦')
+    }
+    else{
+        ref.push({
+            "ss": document.getElementById('inp').value,
+            "usesarName": document.getElementById('are').value
+        }, function(error) {
+            if(error == null){
+                alert('留言成功！')
+            }else{
+                alert('留言失败！')
+            }
+        });
+        document.getElementById('inp').value = '';
+        document.getElementById('are').value = '';
+    }
+
+}
+ref.orderByKey().limitToLast(3).on('value',function (snap) {
+//        console.log(snap.val())
+    var out = ''
+    for(var a in snap.val()){
+        out +=
+            '<div class="user">'+
+            '<ul>'+
+            '<li class="text-success">'+'昵称：'+snap.val()[a].ss +'</li>'+
+            '<li>'+'留言：'+snap.val()[a].usesarName +'</li>'+
+            '</ul>'+
+            '</div>'
+    }
+//        console.log(out)
+    document.getElementById('box').innerHTML = out;
+})
+//星星
+new CanvasStar().init();

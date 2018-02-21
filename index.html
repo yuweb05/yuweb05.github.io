@@ -19,7 +19,7 @@
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body style="background: #c4def8;">
 <div id="app">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -63,11 +63,12 @@
                 </div>
             </div>
         </div>
-        <ol class="breadcrumb row">
+        <ol class="breadcrumb row" style="margin: 0;margin-bottom: 10px">
             <li class="col-xs-6 col-sm-6 col-md-4 col-lg-3 "><a href="index.html">首页</a></li>
             <li class="active col-xs-6 col-sm-6 col-md-4 col-lg-3 " id="but" style="display: none"><a href="javascript:;" >我的故乡</a></li>
             <li class="active col-xs-6 col-sm-6 col-md-4 col-lg-3 " id="clo"><a href="javascript:;">关闭地图</a></li>
         </ol>
+        <!--百度地图-->
         <div class="map" id="allmap">
 
         </div>
@@ -264,6 +265,7 @@
                 </div>
             </div>
         </div>
+        <!--留言-->
         <div class="container row" v-show="curId===5">
             <h3>留言 <h5><span id="num"></span></h5></h3>
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6  animated zoomIn">
@@ -311,51 +313,13 @@
             </div>
         </div>
     </div>
+    <canvas id="canvas"></canvas>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.4"></script>
 <script type="text/javascript"  src="js/vue.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript"  src="js/cav.js"></script>
 <script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
-<script>
-    var ref = new Wilddog("wd4012320599nndlmg.wilddogio.com/first_node");
-    function buts() {
-        if(document.getElementById('inp').value == ''){
-            alert('请留下你的昵称呗')
-        }else if(document.getElementById('are').value == ''){
-            alert('您还没有留言哦')
-        }
-        else{
-            ref.push({
-                "ss": document.getElementById('inp').value,
-                "usesarName": document.getElementById('are').value
-            }, function(error) {
-                if(error == null){
-                    alert('留言成功！')
-                }else{
-                    alert('留言失败！')
-                }
-            });
-            document.getElementById('inp').value = '';
-            document.getElementById('are').value = '';
-        }
-
-    }
-    ref.orderByKey().limitToLast(3).on('value',function (snap) {
-//        console.log(snap.val())
-        var out = ''
-        for(var a in snap.val()){
-            out +=
-                '<div class="user">'+
-                    '<ul>'+
-                        '<li class="text-success">'+'昵称：'+snap.val()[a].ss +'</li>'+
-                        '<li>'+'留言：'+snap.val()[a].usesarName +'</li>'+
-                    '</ul>'+
-                '</div>'
-        }
-//        console.log(out)
-        document.getElementById('box').innerHTML = out;
-    })
-</script>
+<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
